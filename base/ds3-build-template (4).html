@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="es"><!-- Updated dynamically by JS based on BUILD.language -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SEO — Primary meta tags
+       These are overwritten dynamically at runtime from BUILD.seo below.
+       Fill them in BUILD.seo so the engine handles both languages.
+  ════════════════════════════════════════════════════════════════════ -->
+  <title>DS3 Build Guide</title>
+  <meta name="description"          content="">
+  <meta name="keywords"             content="">
+  <meta name="author"               content="">
+  <meta name="robots"               content="index, follow">
+  <link rel="canonical"             href="">
+
+  <!-- Open Graph (Facebook, Discord, WhatsApp) -->
+  <meta property="og:type"          content="article">
+  <meta property="og:title"         content="">
+  <meta property="og:description"   content="">
+  <meta property="og:url"           content="">
+  <meta property="og:site_name"     content="DS3 Build Guide">
+  <meta property="og:locale"        content="">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"         content="summary_large_image">
+  <meta name="twitter:title"        content="">
+  <meta name="twitter:description"  content="">
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+</head>
+<body>
+<script>
+/* ==========================================================================
+   ██████╗ ███████╗██████╗      ██████╗ ██╗   ██╗██╗██████╗ ███████╗
+   ██╔══██╗██╔════╝╚════██╗    ██╔════╝ ██║   ██║██║██╔══██╗██╔════╝
+   ██║  ██║███████╗ █████╔╝    ██║  ███╗██║   ██║██║██║  ██║█████╗
+   ██║  ██║╚════██║ ╚═══██╗    ██║   ██║██║   ██║██║██║  ██║██╔══╝
+   ██████╔╝███████║██████╔╝    ╚██████╔╝╚██████╔╝██║██████╔╝███████╗
+   ╚═════╝ ╚══════╝╚═════╝      ╚═════╝  ╚═════╝ ╚═╝╚═════╝ ╚══════╝
+
+   ┌─────────────────────────────────────────────────────────────────┐
+   │                    CONFIGURATION ZONE                           │
+   │  Only edit inside this block. Do not touch anything below the   │
+   │  closing comment of this section.                               │
+   │                                                                 │
+   │  BILINGUAL FIELDS use this shape:  { es: "...", en: "..." }     │
+   │  Set BUILD.language to pick which one is rendered.              │
+   │                                                                 │
+   │  IMAGES — each item has a dual-source image object:             │
+   │                                                                 │
+   │    image: {                                                     │
+   │      local:    "img/weapons/warden-twinblades.png",            │
+   │      fallback: "https://cdn.example.com/warden.png",           │
+   │    }                                                            │
+   │                                                                 │
+   │  The engine tries "local" first. If it fails to load (404,     │
+   │  missing file), it automatically switches to "fallback".        │
+   │  If both are empty (""), a placeholder icon is shown instead.  │
+   │                                                                 │
+   │  Recommended local folder structure:                            │
+   │    your-build.html                                              │
+   │    img/                                                         │
+   │      weapons/   warden-twinblades.png, uchigatana.png ...      │
+   │      rings/     prisoners-chain.png, carthus-bloodring.png ... │
+   │      armor/     dancers-crown.png, alva-armor.png ...          │
+   └─────────────────────────────────────────────────────────────────┘
+   ========================================================================== */
+
+const BUILD = {
+
+  /* ── LANGUAGE ────────────────────────────────────────────────────────────
+     "es"  →  Español
+     "en"  →  English
+  ─────────────────────────────────────────────────────────────────────────── */
+  language: "es",
+
+
+  /* ── COLOR THEME ─────────────────────────────────────────────────────────
+     "generic"  → Gold / dark grey    (any build)
+     "bleed"    → Deep crimson        (Bleed builds)
+     "magic"    → Arcane blue         (Sorcery / INT builds)
+     "fire"     → Ember orange        (Pyromancy / Fire builds)
+     "tank"     → Iron green          (Greatshield / VIT builds)
+     "faith"    → Sacred gold         (Faith / Miracle builds)
+     "poison"   → Toxic green         (Poison / Luck builds)
+     "dark"     → Abyss purple        (Dark / Hex builds)
+  ─────────────────────────────────────────────────────────────────────────── */
+  theme: "bleed",
+
+
+  /* ── SEO ─────────────────────────────────────────────────────────────────
+     Fill both languages. The engine picks the right one at runtime.
+     pageUrl      : full URL where this page will be hosted (for canonical + OG)
+     author       : your name or site name
+     twitterHandle: your Twitter/X handle, e.g. "@mysite" (optional, leave "" to skip)
+  ─────────────────────────────────────────────────────────────────────────── */
+  seo: {
+    pageUrl:       "https://example.com/builds/bleed-luck",
+    author:        "DS3 Build Guide",
+    twitterHandle: "",
+    title: {
+      es: "Build Sangrado / Suerte DS3 — Guía Completa | Dark Souls 3",
+      en: "DS3 Bleed / Luck Build — Full Guide | Dark Souls 3",
+    },
+    description: {
+      es: "Guía completa de la build de sangrado para Dark Souls 3. Estadísticas óptimas, armas, anillos y armadura recomendados para una build Bleed/Luck al SL 120.",
+      en: "Complete Dark Souls 3 bleed build guide. Optimal stats, weapons, rings and armor for a Bleed/Luck build at SL 120. Community-tested.",
+    },
+    keywords: {
+      es: "dark souls 3 build sangrado, ds3 bleed build, ds3 luck build, warden twinblades, ds3 guía, dark souls 3 sl120",
+      en: "dark souls 3 bleed build, ds3 luck build, warden twinblades build, dark souls 3 guide, ds3 sl120 build",
+    },
+  },
+
+
+  /* ── BUILD INFO ──────────────────────────────────────────────────────────
+     title        : displayed as the hero heading (language-independent)
+     tags         : short tags shown below the title
+     description  : hero paragraph
+     startingClass: recommended starting class (language-independent)
+     targetLevel  : target Soul Level number
+     quote        : footer quote
+  ─────────────────────────────────────────────────────────────────────────── */
+  info: {
+    title:         "Bleed / Luck",
+    startingClass: "Warrior",
+    targetLevel:   120,
+    tags: {
+      es: "Sangrado · Velocidad · PvE/PvP",
+      en: "Bleed · Speed · PvE/PvP",
+    },
+    description: {
+      es: "Una build optimizada por la comunidad para aquellos que buscan velocidad, agresividad y el arte de hacer sangrar a sus enemigos. Basada en estadísticas reales y años de pruebas colectivas.",
+      en: "A community-optimized build for those who seek speed, aggression, and the art of bleeding their enemies dry. Based on real stats and years of collective testing.",
+    },
+    quote: {
+      es: "\"La llama se extingue, y la oscuridad toma el lugar del fuego. Pero tú persistes, manchado de sangre, interminable.\"",
+      en: "\"The flame fades, and darkness takes the place of fire. Yet you persist — blood-stained, unending.\"",
+    },
+  },
+
+
+  /* ── STATS ───────────────────────────────────────────────────────────────
+     highlighted: true  → cell is accented with the theme color
+     name / note        → bilingual objects { es, en }
+     note               → short hint below the value ("" to hide it)
+  ─────────────────────────────────────────────────────────────────────────── */
+  stats: [
+    {
+      name:  { es: "Vigor",        en: "Vigor"        }, abbr: "VGR", value: 40,
+      note:  { es: "≈1200 HP",     en: "≈1200 HP"     }, highlighted: true,
+    },
+    {
+      name:  { es: "Atención",     en: "Attunement"   }, abbr: "ATN", value: 8,
+      note:  { es: "Sin magia",    en: "No magic"     }, highlighted: false,
+    },
+    {
+      name:  { es: "Resistencia",  en: "Endurance"    }, abbr: "END", value: 30,
+      note:  { es: "Stamina p/ combos", en: "Stamina for combos" }, highlighted: false,
+    },
+    {
+      name:  { es: "Vitalidad",    en: "Vitality"     }, abbr: "VIT", value: 15,
+      note:  { es: "Equip load ligero", en: "Light equip load"  }, highlighted: false,
+    },
+    {
+      name:  { es: "Fuerza",       en: "Strength"     }, abbr: "STR", value: 18,
+      note:  { es: "Req. mínimo",  en: "Min. requirement"       }, highlighted: false,
+    },
+    {
+      name:  { es: "Destreza",     en: "Dexterity"    }, abbr: "DEX", value: 40,
+      note:  { es: "Soft cap — max daño", en: "Soft cap — max dmg" }, highlighted: true,
+    },
+    {
+      name:  { es: "Inteligencia", en: "Intelligence" }, abbr: "INT", value: 10,
+      note:  { es: "",             en: ""             }, highlighted: false,
+    },
+    {
+      name:  { es: "Fe",           en: "Faith"        }, abbr: "FTH", value: 10,
+      note:  { es: "",             en: ""             }, highlighted: false,
+    },
+    {
+      name:  { es: "Suerte",       en: "Luck"         }, abbr: "LCK", value: 50,
+      note:  { es: "+10 de armas Hollow", en: "+10 from Hollow wpns" }, highlighted: true,
+    },
+  ],
+
+
+  /* ── WEAPONS ─────────────────────────────────────────────────────────────
+     featured: true  → gold border, highlighted badge
+     Up to 4 weapons. Each has up to 3 mini-stats.
+     All text fields are bilingual objects { es, en }.
+  ─────────────────────────────────────────────────────────────────────────── */
+  weapons: [
+    {
+      featured: true,
+      name:     "Warden Twinblades",
+      image: {
+        local:    "img/weapons/warden-twinblades.png",
+        fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/warden_twinblades.png",
+      },
+      badge: {
+        es: "Arma Principal — S Tier",
+        en: "Main Weapon — S Tier",
+      },
+      subtitle: {
+        es: "Cimitarras Gemelas de los Guardianes",
+        en: "Guardian Twin Blades",
+      },
+      miniStats: [
+        { label: { es: "Sangrado", en: "Bleed"  }, value: "83"     },
+        { label: { es: "Velocidad",en: "Speed"  }, value: "S"      },
+        { label: { es: "Infusión", en: "Infuse" }, value: "Hollow" },
+      ],
+      description: {
+        es: "Las mejores armas de sangrado de todo el juego. Con Carthus Rouge, procas el sangrado en solo 2–3 L1. Su weapon art Spin Slash destruye literalmente cualquier jefe del juego.",
+        en: "The best bleed weapons in the entire game. With Carthus Rouge, you proc bleed in just 2–3 L1 hits. The weapon art Spin Slash destroys virtually any boss.",
+      },
+      location: {
+        es: "Undead Settlement — Farmeadas de los Cathedral Grave Wardens frente a la Catedral de lo Profundo. Drop ~5%. Usa Symbol of Avarice + Gold Serpent Ring.",
+        en: "Undead Settlement — Farmed from Cathedral Grave Wardens near the Cathedral of the Deep. ~5% drop. Use Symbol of Avarice + Gold Serpent Ring.",
+      },
+    },
+    {
+      featured: true,
+      name:     "Onikiri & Ubadachi",
+      image: {
+        local:    "img/weapons/onikiri-ubadachi.png",
+        fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/onikiri_and_ubadachi.png",
+      },
+      badge: {
+        es: "Alternativa — S Tier",
+        en: "Alternative — S Tier",
+      },
+      subtitle: {
+        es: "Katanas Gemelas del Cazador",
+        en: "Hunter's Twin Katanas",
+      },
+      miniStats: [
+        { label: { es: "Sangrado", en: "Bleed"  }, value: "39×2"   },
+        { label: { es: "Velocidad",en: "Speed"  }, value: "S"      },
+        { label: { es: "Infusión", en: "Infuse" }, value: "Hollow" },
+      ],
+      description: {
+        es: "Si amas las katanas, estas son tu destino final. Más alcance que las Warden con un moveset increíble. Hollow infusion a 40/40/50 STR/DEX/LCK le da un AR único.",
+        en: "If you love katanas, these are your endgame. More reach than the Wardens with an incredible moveset. Hollow infusion at 40/40/50 STR/DEX/LCK gives unique AR.",
+      },
+      location: {
+        es: "Grand Archives — Derrota al NPC Black Hand Kamui en el último piso antes del jefe. Pelea obligatoria.",
+        en: "Grand Archives — Defeat NPC Black Hand Kamui on the top floor before the final boss. Unmissable fight.",
+      },
+    },
+    {
+      featured: false,
+      name:     "Uchigatana",
+      image: {
+        local:    "img/weapons/uchigatana.png",
+        fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/uchigatana.png",
+      },
+      badge: {
+        es: "Arma Actual — Mantener",
+        en: "Current Weapon — Keep for now",
+      },
+      subtitle: {
+        es: "Tu compañera hasta el endgame",
+        en: "Your companion until endgame",
+      },
+      miniStats: [
+        { label: { es: "Sangrado", en: "Bleed"  }, value: "45"    },
+        { label: { es: "Velocidad",en: "Speed"  }, value: "A"     },
+        { label: { es: "Infusión", en: "Infuse" }, value: "Sharp" },
+      ],
+      description: {
+        es: "Perfecta para la primera mitad del juego. Infúndela Sharp y escala DEX hasta 40. Potencia el sangrado con Carthus Rouge cuando lo consigas.",
+        en: "Perfect for the first half of the game. Infuse Sharp and scale DEX to 40. Boost bleed with Carthus Rouge when available.",
+      },
+      location: {
+        es: "Firelink Shrine — Del Sword Master en la entrada. O empieza como Mercenary o Assassin.",
+        en: "Firelink Shrine — From the Sword Master at the entrance. Or start as Mercenary / Assassin.",
+      },
+    },
+    {
+      featured: false,
+      name:     "Hollow Caestus +10",
+      image: {
+        local:    "img/weapons/caestus.png",
+        fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/caestus.png",
+      },
+      badge: {
+        es: "Offhand — Utilidad",
+        en: "Offhand — Utility",
+      },
+      subtitle: {
+        es: "+5 Suerte gratis en offhand",
+        en: "+5 free Luck in offhand",
+      },
+      miniStats: [
+        { label: { es: "Peso",  en: "Weight" }, value: "0.5"    },
+        { label: { es: "Bonus",en: "Bonus"  }, value: "+5 LCK" },
+        { label: { es: "Extra",en: "Extra"  }, value: "Parry"  },
+      ],
+      description: {
+        es: "Con 2 armas Hollow +10 equipadas obtienes +10 Luck extra gratis. El Caestus pesa casi nada y permite parries de emergencia.",
+        en: "Having 2 Hollow +10 weapons equipped gives you +10 free Luck. The Caestus weighs almost nothing and enables emergency parries.",
+      },
+      location: {
+        es: "Firelink Shrine — Cómpralo al Shrine Handmaid por 200 almas. Infunde Hollow con la Profaned Coal desbloqueada.",
+        en: "Firelink Shrine — Buy from the Shrine Handmaid for 200 souls. Infuse Hollow once you unlock the Profaned Coal.",
+      },
+    },
+  ],
+
+
+  /* ── RINGS ───────────────────────────────────────────────────────────────
+     Up to 4 rings (the 4 in-game ring slots).
+  ─────────────────────────────────────────────────────────────────────────── */
+  rings: [
+    {
+      icon:  "⛓",
+      image: { local: "img/rings/prisoners-chain.png",    fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/prisoners_chain.png" },
+      name:  "Prisoner's Chain",
+      effect: {
+        es: "+5 Vigor, +5 Endurance, +5 Vitality. El mejor anillo para builds físicas — ahorra 15 niveles.",
+        en: "+5 Vigor, +5 Endurance, +5 Vitality. The best ring for physical builds — saves 15 stat levels.",
+      },
+      location: {
+        es: "DLC Ashes of Ariandel — Mata al jefe Gravetender Greatwolf. Sin DLC: Ring of Favor +3.",
+        en: "DLC Ashes of Ariandel — Kill boss Gravetender Greatwolf. Without DLC: Ring of Favor +3.",
+      },
+    },
+    {
+      icon:  "🩸",
+      image: { local: "img/rings/carthus-bloodring.png",  fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/carthus_bloodring.png" },
+      name:  "Carthus Bloodring",
+      effect: {
+        es: "+10 iframes al dodge. Tu roll mantiene frames máximos sin importar el equip load.",
+        en: "+10 iframes on dodge. Your roll keeps maximum frames regardless of equip load.",
+      },
+      location: {
+        es: "Catacombs of Carthus — Detrás de la puerta que abre el esqueleto bola de fuego. Cofre.",
+        en: "Catacombs of Carthus — Behind the door opened by the fire skeleton ball. Chest item.",
+      },
+    },
+    {
+      icon:  "⚔",
+      image: { local: "img/rings/ring-of-favor.png",      fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/ring_of_favor.png" },
+      name:  "Ring of Favor +3",
+      effect: {
+        es: "+6% HP, +11.5% Stamina, +8.5% equip load. Excelente valor general para cualquier build.",
+        en: "+6% HP, +11.5% Stamina, +8.5% equip load. Excellent all-around value for any build.",
+      },
+      location: {
+        es: "Base: Irithyll Dungeon (Angels). Versión +3: Ringed City DLC.",
+        en: "Base version: Irithyll Dungeon (Angels). +3 version: Ringed City DLC.",
+      },
+    },
+    {
+      icon:  "🔮",
+      image: { local: "img/rings/lloyds-sword-ring.png",  fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/lloyds_sword_ring.png" },
+      name:  "Lloyd's Sword Ring",
+      effect: {
+        es: "+10% daño a HP completa. Potencia el primer burst antes de recibir daño.",
+        en: "+10% damage at full HP. Boosts the opening burst before taking damage.",
+      },
+      location: {
+        es: "Irithyll of the Boreal Valley — Zona de Anor Londo, aposentos de los caballeros plateados.",
+        en: "Irithyll of the Boreal Valley — Anor Londo area, silver knight chambers.",
+      },
+    },
+  ],
+
+
+  /* ── ARMOR ───────────────────────────────────────────────────────────────
+     Exactly 4 pieces: head, chest, hands, legs.
+     All text fields are bilingual objects { es, en }.
+  ─────────────────────────────────────────────────────────────────────────── */
+  armor: [
+    {
+      name:  "Dancer's Crown",
+      image: { local: "img/armor/dancers-crown.png",     fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/dancers_crown.png" },
+      slot: {
+        es: "Cabeza",
+        en: "Head",
+      },
+      description: {
+        es: "Excelente defensa física para su bajo peso. Se consigue tras matar a la Dancer of the Boreal Valley.",
+        en: "Excellent physical defense for its low weight. Obtained after killing the Dancer of the Boreal Valley.",
+      },
+      alternative: {
+        es: "Old Wolf Curved Sword Hood / Nameless King Helm",
+        en: "Old Wolf Curved Sword Hood / Nameless King Helm",
+      },
+    },
+    {
+      name:  "Alva Armor",
+      image: { local: "img/armor/alva-armor.png",        fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/alva_armor.png" },
+      slot: {
+        es: "Torso",
+        en: "Chest",
+      },
+      description: {
+        es: "La mejor relación peso/defensa del juego. Farmeable de un invader NPC en Irithyll of the Boreal Valley.",
+        en: "Best weight-to-defense ratio in the game. Farmable from an NPC invader in Irithyll of the Boreal Valley.",
+      },
+      alternative: {
+        es: "Undead Legion Armor / Master's Attire",
+        en: "Undead Legion Armor / Master's Attire",
+      },
+    },
+    {
+      name:  "Dancer's Gauntlets",
+      image: { local: "img/armor/dancers-gauntlets.png", fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/dancers_gauntlets.png" },
+      slot: {
+        es: "Manos",
+        en: "Hands",
+      },
+      description: {
+        es: "Complementan el set de la Dancer. Para ir más ligero usa Wanderer Manchettes (pesan casi nada).",
+        en: "Completes the Dancer set. For a lighter option use Wanderer Manchettes (near weightless).",
+      },
+      alternative: {
+        es: "Cualquier pieza bajo 2.0 de peso",
+        en: "Anything under 2.0 weight units",
+      },
+    },
+    {
+      name:  "Alva Leggings",
+      image: { local: "img/armor/alva-leggings.png",     fallback: "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/alva_leggings.png" },
+      slot: {
+        es: "Piernas",
+        en: "Legs",
+      },
+      description: {
+        es: "Completan el set Alva. Ligeros, con buena defensa física y resistencias equilibradas.",
+        en: "Complete the Alva set. Light, solid physical defense and balanced resistances.",
+      },
+      alternative: {
+        es: "Master's Trousers / Loincloth (ultra light)",
+        en: "Master's Trousers / Loincloth (ultra light)",
+      },
+    },
+  ],
+
+};
+
+/* ==========================================================================
+   END OF CONFIGURATION ZONE
+   Do not modify anything below this line.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   THEMES
+   ========================================================================== */
+
+const THEMES = {
+  generic: {
+    accent: "#c9a84c", accentDim: "#7a6128", accentGlow: "#e8c86a",
+    bg: "#0d0b09",     bgMid: "#1a1612",
+    glow: "rgba(201,168,76,.20)",
+    radialGlow: "rgba(120,90,20,.18)",
+    border: "rgba(201,168,76,.25)",
+    borderMid: "rgba(201,168,76,.10)",
+    badgeBg: "#7a6128",
+    headerGradient: "linear-gradient(to right, #7a6128, rgba(122,97,40,.40))",
+    slGradient:     "linear-gradient(135deg, rgba(120,90,20,.13), rgba(201,168,76,.07))",
+  },
+  bleed: {
+    accent: "#cc0000", accentDim: "#6b0000", accentGlow: "#ff2222",
+    bg: "#0d0b09",     bgMid: "#1a1612",
+    glow: "rgba(139,0,0,.20)",
+    radialGlow: "rgba(100,0,0,.20)",
+    border: "rgba(139,0,0,.28)",
+    borderMid: "rgba(139,0,0,.10)",
+    badgeBg: "#8b0000",
+    headerGradient: "linear-gradient(to right, #8b0000, rgba(139,0,0,.40))",
+    slGradient:     "linear-gradient(135deg, rgba(139,0,0,.13), rgba(201,168,76,.06))",
+  },
+  magic: {
+    accent: "#4a8fff", accentDim: "#1a3a7a", accentGlow: "#7ab4ff",
+    bg: "#080c14",     bgMid: "#0e1520",
+    glow: "rgba(74,143,255,.20)",
+    radialGlow: "rgba(30,60,140,.22)",
+    border: "rgba(74,143,255,.28)",
+    borderMid: "rgba(74,143,255,.10)",
+    badgeBg: "#1a3a7a",
+    headerGradient: "linear-gradient(to right, #1a3a7a, rgba(26,58,122,.40))",
+    slGradient:     "linear-gradient(135deg, rgba(30,60,140,.16), rgba(74,143,255,.07))",
+  },
+  fire: {
+    accent: "#e85d00", accentDim: "#7a2e00", accentGlow: "#ff8c33",
+    bg: "#0e0904",     bgMid: "#1c1008",
+    glow: "rgba(232,93,0,.20)",
+    radialGlow: "rgba(160,60,0,.20)",
+    border: "rgba(232,93,0,.28)",
+    borderMid: "rgba(232,93,0,.10)",
+    badgeBg: "#7a2e00",
+    headerGradient: "linear-gradient(to right, #7a2e00, rgba(122,46,0,.40))",
+    slGradient:     "linear-gradient(135deg, rgba(160,60,0,.15), rgba(232,93,0,.07))",
+  },
+  tank: {
+    accent: "#4a9e6b", accentDim: "#1f5238", accentGlow: "#6dcc92",
+    bg: "#080e0a",     bgMid: "#101a12",
+    glow: "rgba(74,158,107,.20)",
+    radialGlow: "rgba(20,80,40,.20)",
+    border: "rgba(74,158,107,.28)",
+    borderMid: "rgba(74,158,107,.10)",
+    badgeBg: "#1f5238",
+    headerGradient: "linear-gradient(to right, #1f5238, rgba(31,82,56,.40))",
+    slGradient:     "linear-gradient(135deg, rgba(20,80,40,.15), rgba(74,158,107,.07))",
+  },
+  faith: {
+    accent: "#d4a017", accentDim: "#7a5a00", accentGlow: "#ffcc44",
+    bg: "#0e0c06",     bgMid: "#1a1608",
+    glow: "rgba(212,160,23,.20)",
+    radialGlow: "rgba(160,120,0,.18)",
+    border: "rgba(212,160,23,.28)",
+    borderMid: "rgba(212,160,23,.10)",
+    badgeBg: "#7a5a00",
+    headerGradient: "linear-gradient(to right, #7a5a00, rgba(122,90,0,.40))",
+    slGradient:     "linear-gradient(135deg, rgba(160,120,0,.15), rgba(212,160,23,.08))",
+  },
+  poison: {
+    accent: "#7ab83a", accentDim: "#3a6010", accentGlow: "#a8e055",
+    bg: "#080d04",     bgMid: "#101808",
+    glow: "rgba(122,184,58,.20)",
+    radialGlow: "rgba(50,100,10,.20)",
+    border: "rgba(122,184,58,.28)",
+    borderMid: "rgba(122,184,58,.10)",
+    badgeBg: "#3a6010",
+    headerGradient: "linear-gradient(to right, #3a6010, rgba(58,96,16,.40))",
+    slGradient:     "linear-gradient(135deg, rgba(50,100,10,.15), rgba(122,184,58,.07))",
+  },
+  dark: {
+    accent: "#9b59b6", accentDim: "#4a1a6b", accentGlow: "#c47ee0",
+    bg: "#09060e",     bgMid: "#130a1c",
+    glow: "rgba(155,89,182,.20)",
+    radialGlow: "rgba(80,20,120,.20)",
+    border: "rgba(155,89,182,.28)",
+    borderMid: "rgba(155,89,182,.10)",
+    badgeBg: "#4a1a6b",
+    headerGradient: "linear-gradient(to right, #4a1a6b, rgba(74,26,107,.40))",
+    slGradient:     "linear-gradient(135deg, rgba(80,20,120,.15), rgba(155,89,182,.07))",
+  },
+};
+
+
+/* ==========================================================================
+   UI STRINGS  (interface labels — not content)
+   ========================================================================== */
+
+const STRINGS = {
+  es: {
+    eyebrow:          "◈ Dark Souls III ◈ Guía de Build ◈",
+    sectionStats:     "Estadísticas",
+    sectionStatsSub:  "Distribución óptima al SL",
+    sectionWeapons:   "Armas",
+    sectionWeaponsSub:"El instrumento de tu ejecución",
+    sectionRings:     "Anillos",
+    sectionRingsSub:  "Cuatro slots, cuatro decisiones vitales",
+    sectionArmor:     "Armadura",
+    sectionArmorSub:  "Mantén el equip load bajo el 30%",
+    classLabel:       "Clase Inicial",
+    levelLabel:       "Soul Level",
+    classNote:        "Clase inicial recomendada",
+    headerClass:      "CLASE",
+    headerLevel:      "SOUL LEVEL OBJETIVO",
+    locationLabel:    "📍 Ubicación",
+    alternativeLabel: "Alt:",
+    scrollHint:       "↓  DESPLÁZATE  ↓",
+    footerCredit:     "Dark Souls III · Guía de Build ·",
+  },
+  en: {
+    eyebrow:          "◈ Dark Souls III ◈ Build Guide ◈",
+    sectionStats:     "Stats",
+    sectionStatsSub:  "Optimal distribution at SL",
+    sectionWeapons:   "Weapons",
+    sectionWeaponsSub:"The instrument of your execution",
+    sectionRings:     "Rings",
+    sectionRingsSub:  "Four slots, four vital decisions",
+    sectionArmor:     "Armor",
+    sectionArmorSub:  "Keep equip load below 30%",
+    classLabel:       "Starting Class",
+    levelLabel:       "Soul Level",
+    classNote:        "Recommended starting class",
+    headerClass:      "CLASS",
+    headerLevel:      "TARGET SOUL LEVEL",
+    locationLabel:    "📍 Location",
+    alternativeLabel: "Alt:",
+    scrollHint:       "↓  SCROLL DOWN  ↓",
+    footerCredit:     "Dark Souls III · Build Guide ·",
+  },
+};
+
+
+/* ==========================================================================
+   BOOTSTRAP
+   ========================================================================== */
+
+const lang  = BUILD.language === "en" ? "en" : "es";
+const theme = THEMES[BUILD.theme] ?? THEMES.generic;
+const str   = STRINGS[lang];
+const info  = BUILD.info;
+
+/**
+ * Resolves a bilingual field object to the current language string.
+ * @param {{ es: string, en: string }} field
+ * @returns {string}
+ */
+const translate = (field) => field[lang] ?? field.en ?? "";
+
+document.documentElement.lang = lang;
+
+
+/* ==========================================================================
+   SEO INJECTION
+   ========================================================================== */
+
+function injectSeoTags() {
+  const { seo }   = BUILD;
+  const title     = translate(seo.title);
+  const desc      = translate(seo.description);
+  const keywords  = translate(seo.keywords);
+  const ogLocale  = lang === "en" ? "en_US" : "es_ES";
+
+  document.title = title;
+
+  const setMeta = (selector, attr, value) => {
+    const el = document.querySelector(selector);
+    if (el && value) el.setAttribute(attr, value);
+  };
+
+  setMeta('meta[name="description"]',          "content", desc);
+  setMeta('meta[name="keywords"]',             "content", keywords);
+  setMeta('meta[name="author"]',               "content", seo.author);
+  setMeta('link[rel="canonical"]',             "href",    seo.pageUrl);
+  setMeta('meta[property="og:title"]',         "content", title);
+  setMeta('meta[property="og:description"]',   "content", desc);
+  setMeta('meta[property="og:url"]',           "content", seo.pageUrl);
+  setMeta('meta[property="og:locale"]',        "content", ogLocale);
+  setMeta('meta[name="twitter:title"]',        "content", title);
+  setMeta('meta[name="twitter:description"]',  "content", desc);
+
+  if (seo.twitterHandle) {
+    document.head.insertAdjacentHTML(
+      "beforeend",
+      `<meta name="twitter:site" content="${seo.twitterHandle}">`
+    );
+  }
+
+  // JSON-LD structured data (Article schema)
+  const jsonLd = {
+    "@context":    "https://schema.org",
+    "@type":       "Article",
+    "headline":    title,
+    "description": desc,
+    "author":      { "@type": "Organization", "name": seo.author },
+    "url":         seo.pageUrl,
+    "inLanguage":  lang,
+    "about": {
+      "@type": "VideoGame",
+      "name":  "Dark Souls III",
+    },
+  };
+
+  document.head.insertAdjacentHTML(
+    "beforeend",
+    `<script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}<\/script>`
+  );
+}
+
+injectSeoTags();
+
+
+/* ==========================================================================
+   CSS INJECTION
+   ========================================================================== */
+
+const GOLD      = "#c9a84c";
+const GOLD_DIM  = "#7a6128";
+const TEXT      = "#e8d9b5";
+const TEXT_DIM  = "#b8a882";
+const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")`;
+
+document.head.insertAdjacentHTML("beforeend", `<style>
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Base ── */
+body {
+  background: ${theme.bg};
+  color: ${TEXT};
+  font-family: 'EB Garamond', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: ${NOISE_SVG};
+  pointer-events: none;
+  z-index: 1000;
+  opacity: .45;
+}
+
+/* Vignette */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.60) 100%);
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 80px 24px 130px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 55%, ${theme.radialGlow} 0%, transparent 68%);
+}
+
+.hero__grid {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,  transparent, transparent 59px, ${theme.accent}09 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, ${theme.accent}09 60px);
+}
+
+.hero__eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 12px; letter-spacing: 8px;
+  color: ${theme.accent}; text-transform: uppercase;
+  margin-bottom: 18px;
+  animation: fadeUp .9s ease both .30s;
+}
+
+.hero__title {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: clamp(32px, 8vw, 82px);
+  font-weight: 900; line-height: 1.06;
+  color: ${TEXT};
+  text-shadow: 0 0 40px ${theme.glow}, 0 0 90px ${theme.glow}, 2px 3px 0 rgba(0,0,0,.8);
+  animation: fadeUp .9s ease both .55s;
+}
+
+.hero__title em {
+  font-style: normal;
+  color: ${theme.accentGlow};
+  text-shadow: 0 0 18px ${theme.glow}, 0 0 50px ${theme.glow};
+}
+
+.hero__tags {
+  font-family: 'Cinzel', serif;
+  font-size: 12px; letter-spacing: 5px;
+  color: ${GOLD}; text-transform: uppercase;
+  margin-top: 22px;
+  animation: fadeUp .9s ease both .75s;
+}
+
+.hero__rule {
+  width: 280px; height: 1px;
+  margin: 28px auto;
+  background: linear-gradient(to right, transparent, ${theme.accent}, ${GOLD}, ${theme.accent}, transparent);
+  animation: fadeUp .9s ease both .90s;
+}
+
+.hero__description {
+  max-width: 640px;
+  color: ${TEXT_DIM}; font-style: italic; font-size: 18px;
+  animation: fadeUp .9s ease both 1.05s;
+}
+
+.hero__badge {
+  display: inline-flex; gap: 28px; align-items: center;
+  margin-top: 36px; padding: 16px 36px;
+  border: 1px solid ${theme.border};
+  background: rgba(0,0,0,.35);
+  animation: fadeUp .9s ease both 1.20s;
+}
+
+.hero__badge-item { text-align: center; }
+
+.hero__badge-label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: ${GOLD_DIM}; margin-bottom: 4px;
+}
+
+.hero__badge-value {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 28px; font-weight: 900;
+  color: ${GOLD}; text-shadow: 0 0 20px rgba(201,168,76,.4);
+}
+
+.hero__badge-separator { width: 1px; height: 42px; background: ${theme.border}; }
+
+.hero__scroll-hint {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 4px; color: ${GOLD_DIM};
+  animation: pulse 2.5s ease-in-out infinite 2s;
+}
+
+/* ── Layout ── */
+.page-wrapper { max-width: 1080px; margin: 0 auto; padding: 0 24px 100px; }
+
+/* ── Section ── */
+.section { margin-bottom: 72px; }
+
+.section__header { display: flex; align-items: center; gap: 18px; margin-bottom: 36px; }
+
+.section__number {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 44px; font-weight: 900;
+  color: ${theme.accent}; opacity: .28; line-height: 1; flex-shrink: 0;
+}
+
+.section__titles h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(18px, 3.5vw, 26px); font-weight: 700;
+  color: ${GOLD}; letter-spacing: 3px; text-transform: uppercase;
+}
+
+.section__titles p { font-style: italic; color: ${theme.accent}; font-size: 14px; margin-top: 3px; }
+
+.section__rule { flex: 1; height: 1px; background: linear-gradient(to right, ${theme.accent}, transparent); }
+
+/* ── Stats panel ── */
+.stats-panel { border: 1px solid ${theme.border}; overflow: hidden; }
+
+.stats-panel__header {
+  background: ${theme.headerGradient};
+  padding: 14px 24px;
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 4px; text-transform: uppercase; color: ${TEXT};
+}
+
+.stats-panel__summary {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+  padding: 24px 28px;
+  background: ${theme.slGradient};
+  border-bottom: 1px solid ${theme.border};
+}
+
+.stats-panel__level-label { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px; color: ${GOLD}; }
+
+.stats-panel__level-value {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 60px; font-weight: 900; line-height: 1;
+  color: ${GOLD}; text-shadow: 0 0 28px rgba(201,168,76,.4);
+}
+
+.stats-panel__class-note { font-family: 'Cinzel', serif; font-size: 13px; color: ${TEXT_DIM}; letter-spacing: 2px; }
+.stats-panel__class-name { font-family: 'Cinzel', serif; font-size: 20px; color: ${TEXT}; margin-top: 4px; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
+
+.stat-cell {
+  padding: 20px 22px;
+  border-right: 1px solid ${theme.borderMid};
+  border-bottom: 1px solid ${theme.borderMid};
+  position: relative; overflow: hidden;
+  background: rgba(0,0,0,.35);
+  transition: background .25s;
+}
+
+.stat-cell:hover                      { background: ${theme.glow.replace(".20", ".06")}; }
+.stat-cell--highlighted               { background: ${theme.glow.replace(".20", ".10")}; }
+.stat-cell--highlighted:hover         { background: ${theme.glow.replace(".20", ".14")}; }
+
+.stat-cell::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  height: 2px; background: ${theme.accent};
+  width: 0; transition: width 1.4s ease-out;
+}
+
+.stat-cell--animated::after { width: var(--fill-width); }
+
+.stat-cell__label {
+  display: block;
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: ${GOLD_DIM}; margin-bottom: 6px;
+}
+
+.stat-cell__value {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 30px; font-weight: 700; line-height: 1; color: ${TEXT};
+}
+
+.stat-cell--highlighted .stat-cell__value {
+  color: ${theme.accentGlow};
+  text-shadow: 0 0 16px ${theme.glow};
+}
+
+.stat-cell__note { font-size: 12px; font-style: italic; color: ${theme.accent}; margin-top: 3px; }
+
+/* ── Shared slot placeholder ── */
+.slot__placeholder {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+  opacity: .18;
+  color: ${theme.accent};
+}
+
+/* ── Weapon cards ── */
+.weapon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+
+.weapon-card {
+  background: ${theme.bgMid};
+  border: 1px solid ${theme.border};
+  border-top: 2px solid ${theme.accent};
+  padding: 0;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.weapon-card--featured { border-top-color: ${GOLD}; border-color: rgba(201,168,76,.25); }
+.weapon-card:hover      { transform: translateY(-4px); box-shadow: 0 14px 40px ${theme.glow}; }
+
+/* Inventory slot header — icon left, badge+name right */
+.weapon-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1px solid ${theme.border};
+  background: rgba(0,0,0,.40);
+}
+
+.weapon-card__slot {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.03) 0%, transparent 60%),
+    rgba(0,0,0,.55);
+  border-right: 1px solid ${theme.border};
+  position: relative;
+  overflow: hidden;
+}
+
+/* Corner notch — DS3 inventory aesthetic */
+.weapon-card__slot::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  border-style: solid;
+  border-width: 0 14px 14px 0;
+  border-color: transparent ${theme.accent} transparent transparent;
+  opacity: .7;
+}
+
+.weapon-card__slot-image {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(0 2px 8px ${theme.glow});
+  transition: transform .3s ease;
+}
+
+.weapon-card:hover .weapon-card__slot-image { transform: scale(1.12); }
+
+.weapon-card__slot-placeholder {
+  display: flex; align-items: center; justify-content: center;
+  width: 64px; height: 64px; opacity: .2;
+  color: ${theme.accent};
+}
+
+.weapon-card__header-text {
+  flex: 1;
+  padding: 12px 16px;
+  min-width: 0;
+}
+
+.weapon-card__body { padding: 18px 22px 22px; }
+
+.weapon-card__badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 3px; text-transform: uppercase;
+  padding: 3px 12px; margin-bottom: 14px;
+  background: ${theme.badgeBg}; color: ${TEXT};
+}
+
+.weapon-card--featured .weapon-card__badge { background: ${GOLD_DIM}; }
+
+.weapon-card__name     { font-family: 'Cinzel', serif; font-size: 21px; font-weight: 700; color: ${TEXT}; }
+.weapon-card__subtitle { font-style: italic; color: ${theme.accent}; font-size: 14px; margin: 5px 0 18px; }
+
+.weapon-card__mini-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; padding: 14px;
+  background: rgba(0,0,0,.30);
+  border-left: 3px solid ${theme.accent};
+  margin-bottom: 18px;
+}
+
+.mini-stat { text-align: center; }
+
+.mini-stat__label {
+  display: block;
+  font-family: 'Cinzel', serif; font-size: 8px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: ${GOLD_DIM}; margin-bottom: 3px;
+}
+
+.mini-stat__value { font-family: 'Cinzel', serif; font-size: 17px; font-weight: 700; color: ${theme.accentGlow}; }
+
+.weapon-card__description { font-size: 14px; color: ${TEXT_DIM}; line-height: 1.6; }
+
+.weapon-card__location {
+  margin-top: 14px; padding: 11px 14px;
+  background: ${theme.glow.replace(".20", ".08")};
+  border-left: 2px solid ${theme.accent};
+  font-size: 13px; color: ${TEXT_DIM};
+}
+
+.weapon-card__location-label {
+  display: block;
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: ${GOLD}; margin-bottom: 4px;
+}
+
+/* ── Ring cards ── */
+.ring-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+
+.ring-card {
+  display: flex; gap: 0; align-items: stretch;
+  border: 1px solid ${theme.border};
+  background: rgba(0,0,0,.30);
+  overflow: hidden;
+  transition: border-color .25s, box-shadow .25s;
+}
+
+.ring-card:hover { border-color: rgba(201,168,76,.35); box-shadow: 0 0 20px rgba(201,168,76,.05); }
+
+.ring-card__slot {
+  width: 72px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.03) 0%, transparent 60%),
+    rgba(0,0,0,.50);
+  border-right: 1px solid ${theme.border};
+  position: relative;
+}
+
+.ring-card__slot::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 0;
+  border-color: transparent ${GOLD_DIM} transparent transparent;
+  opacity: .6;
+}
+
+.ring-card__slot-inner {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid ${GOLD_DIM};
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.06), rgba(0,0,0,.5));
+  overflow: hidden;
+  transition: border-color .25s;
+}
+
+.ring-card:hover .ring-card__slot-inner { border-color: ${GOLD}; }
+
+.ring-card__slot-image {
+  width: 36px; height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 4px ${theme.glow});
+  transition: transform .3s ease;
+}
+
+.ring-card:hover .ring-card__slot-image { transform: scale(1.15); }
+
+.ring-card__slot-fallback { font-size: 22px; line-height: 1; }
+
+.ring-card__body  { flex: 1; padding: 14px 16px; min-width: 0; }
+.ring-card__name     { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 600; color: ${GOLD}; margin-bottom: 5px; }
+.ring-card__effect   { font-size: 13px; color: ${TEXT_DIM}; line-height: 1.5; }
+.ring-card__location { font-size: 12px; font-style: italic; color: ${theme.accent}; margin-top: 7px; }
+
+/* ── Armor pieces ── */
+.armor-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  border: 1px solid ${theme.border}; overflow: hidden;
+}
+
+.armor-piece {
+  display: flex; flex-direction: column;
+  border-right: 1px solid ${theme.borderMid};
+  border-bottom: 1px solid ${theme.borderMid};
+  background: rgba(0,0,0,.30);
+  overflow: hidden;
+  transition: background .25s;
+}
+
+.armor-piece:hover { background: ${theme.glow.replace(".20", ".05")}; }
+
+/* Armor slot header — same inventory slot pattern */
+.armor-piece__header {
+  display: flex; align-items: center; gap: 0;
+  border-bottom: 1px solid ${theme.borderMid};
+  background: rgba(0,0,0,.35);
+}
+
+.armor-piece__slot-box {
+  width: 72px; height: 72px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.03) 0%, transparent 60%),
+    rgba(0,0,0,.50);
+  border-right: 1px solid ${theme.borderMid};
+  position: relative;
+}
+
+.armor-piece__slot-box::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 0;
+  border-color: transparent ${theme.accent} transparent transparent;
+  opacity: .6;
+}
+
+.armor-piece__slot-image {
+  width: 52px; height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px ${theme.glow});
+  transition: transform .3s ease;
+}
+
+.armor-piece:hover .armor-piece__slot-image { transform: scale(1.1); }
+
+.armor-piece__slot-placeholder {
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; opacity: .2; color: ${theme.accent};
+}
+
+.armor-piece__slot-label {
+  flex: 1; padding: 0 14px;
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: ${theme.accent};
+}
+
+.armor-piece__body        { padding: 14px 18px 18px; flex: 1; }
+.armor-piece__name        { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 600; color: ${TEXT}; margin-bottom: 8px; }
+.armor-piece__description { font-size: 13px; color: ${TEXT_DIM}; line-height: 1.55; }
+.armor-piece__alternative { font-size: 12px; font-style: italic; color: ${GOLD_DIM}; margin-top: 8px; }
+
+/* ── Footer ── */
+footer {
+  text-align: center; padding: 60px 20px;
+  border-top: 1px solid ${theme.border};
+}
+
+footer::before {
+  content: ''; display: block;
+  width: 200px; height: 1px;
+  background: linear-gradient(to right, transparent, ${GOLD}, transparent);
+  margin: 0 auto 28px;
+}
+
+.footer__quote  { font-style: italic; font-size: 17px; color: ${TEXT_DIM}; max-width: 520px; margin: 0 auto 18px; }
+.footer__credit { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px; color: ${GOLD_DIM}; text-transform: uppercase; }
+
+/* ── Scroll reveal utility ── */
+.js-reveal          { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+.js-reveal--visible { opacity: 1; transform: translateY(0); }
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: .3; }
+  50%       { opacity: .9; }
+}
+</style>`);
+
+
+/* ==========================================================================
+   RENDER HELPERS
+   ========================================================================== */
+
+/**
+ * Splits the build title so the last word renders inside <em>.
+ * @param {string} rawTitle
+ * @returns {string} HTML string
+ */
+function formatHeroTitle(rawTitle) {
+  const words = rawTitle.toUpperCase().split(" ");
+  if (words.length === 1) return `<em>${words[0]}</em>`;
+  return words.slice(0, -1).join(" ") + "<br><em>" + words.at(-1) + "</em>";
+}
+
+/**
+ * Converts a stat value (0–99) to a CSS percentage string for the fill bar.
+ * @param {number} value
+ * @returns {string}
+ */
+function toFillWidth(value) {
+  const clamped = Math.min(Math.max(value, 0), 99);
+  return Math.round(clamped / 99 * 100) + "%";
+}
+
+/**
+ * Wraps content inside a numbered section with header and rule.
+ * @param {string} romanNumeral
+ * @param {string} title
+ * @param {string} subtitle
+ * @param {string} content  - inner HTML
+ * @returns {string} HTML string
+ */
+function renderSection(romanNumeral, title, subtitle, content) {
+  return `
+    <section class="section js-reveal" aria-label="${title}">
+      <div class="section__header">
+        <div class="section__number" aria-hidden="true">${romanNumeral}</div>
+        <div class="section__titles">
+          <h2>${title}</h2>
+          <p>${subtitle}</p>
+        </div>
+        <div class="section__rule" aria-hidden="true"></div>
+      </div>
+      ${content}
+    </section>`;
+}
+
+function renderStats() {
+  const cells = BUILD.stats.map(stat => {
+    const name          = translate(stat.name);
+    const note          = translate(stat.note);
+    const highlightMod  = stat.highlighted ? " stat-cell--highlighted" : "";
+
+    return `
+      <div class="stat-cell${highlightMod}" style="--fill-width: ${toFillWidth(stat.value)}">
+        <span class="stat-cell__label">${name} (${stat.abbr})</span>
+        <div class="stat-cell__value">${stat.value}</div>
+        ${note ? `<div class="stat-cell__note">${note}</div>` : ""}
+      </div>`;
+  }).join("");
+
+  return `
+    <div class="stats-panel">
+      <div class="stats-panel__header">
+        ${str.headerClass}: ${info.startingClass.toUpperCase()} &nbsp;·&nbsp; ${str.headerLevel}: ${info.targetLevel}
+      </div>
+      <div class="stats-panel__summary">
+        <div>
+          <div class="stats-panel__level-label">${str.levelLabel}</div>
+          <div class="stats-panel__level-value">${info.targetLevel}</div>
+        </div>
+        <div>
+          <div class="stats-panel__class-note">${str.classNote}</div>
+          <div class="stats-panel__class-name">${info.startingClass}</div>
+        </div>
+      </div>
+      <div class="stats-grid" role="list">${cells}</div>
+    </div>`;
+}
+
+/**
+ * Builds an <img> tag that tries the local src first,
+ * then falls back to the external URL if local fails to load.
+ * Returns a placeholder SVG string if both sources are empty.
+ *
+ * @param {{ local: string, fallback: string }} imageObj
+ * @param {string} altText
+ * @param {string} cssClass
+ * @param {string} placeholderSvg  - raw SVG string shown when no src is available
+ * @returns {string} HTML string
+ */
+function resolveImage(imageObj, altText, cssClass, placeholderSvg) {
+  const local    = imageObj?.local    ?? "";
+  const fallback = imageObj?.fallback ?? "";
+
+  if (!local && !fallback) return placeholderSvg;
+
+  // Start with local; on error, swap to fallback (or remove src to hide broken icon)
+  const onError = fallback
+    ? `this.onerror=null; this.src='${fallback}';`
+    : `this.style.display='none';`;
+
+  return `<img
+    class="${cssClass}"
+    src="${local || fallback}"
+    alt="${altText}"
+    loading="lazy"
+    onerror="${onError}"
+  >`;
+}
+
+/* ── SVG placeholders ─────────────────────────────────────────────────────── */
+
+const PLACEHOLDER_SVG_WEAPON = `
+  <div class="slot__placeholder">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.5 2.5l7 7L8 23l-3-3 1.5-1.5L3 15l3-3 3.5 3.5L14.5 2.5z"/>
+      <line x1="3" y1="21" x2="6" y2="18"/>
+    </svg>
+  </div>`;
+
+const PLACEHOLDER_SVG_RING = `
+  <div class="slot__placeholder">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1"
+         stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="8"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+  </div>`;
+
+const PLACEHOLDER_SVG_ARMOR = `
+  <div class="slot__placeholder">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="1"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L4 6v6c0 5.5 3.5 10 8 12 4.5-2 8-6.5 8-12V6l-8-4z"/>
+    </svg>
+  </div>`;
+
+/* ── Render functions ─────────────────────────────────────────────────────── */
+
+function renderWeapons() {
+  const cards = BUILD.weapons.map(weapon => {
+    const featuredMod = weapon.featured ? " weapon-card--featured" : "";
+
+    const slotImage = resolveImage(
+      weapon.image,
+      weapon.name,
+      "weapon-card__slot-image",
+      PLACEHOLDER_SVG_WEAPON
+    );
+
+    const miniStats = weapon.miniStats.map(s => `
+      <div class="mini-stat">
+        <span class="mini-stat__label">${translate(s.label)}</span>
+        <span class="mini-stat__value">${s.value}</span>
+      </div>`).join("");
+
+    return `
+      <article class="weapon-card${featuredMod}">
+        <div class="weapon-card__header">
+          <div class="weapon-card__slot" aria-hidden="true">${slotImage}</div>
+          <div class="weapon-card__header-text">
+            <div class="weapon-card__badge">${translate(weapon.badge)}</div>
+            <h3 class="weapon-card__name">${weapon.name}</h3>
+            <div class="weapon-card__subtitle">${translate(weapon.subtitle)}</div>
+          </div>
+        </div>
+        <div class="weapon-card__body">
+          <div class="weapon-card__mini-stats" aria-label="weapon stats">${miniStats}</div>
+          <p class="weapon-card__description">${translate(weapon.description)}</p>
+          <div class="weapon-card__location">
+            <span class="weapon-card__location-label">${str.locationLabel}</span>
+            ${translate(weapon.location)}
+          </div>
+        </div>
+      </article>`;
+  }).join("");
+
+  return `<div class="weapon-grid">${cards}</div>`;
+}
+
+function renderRings() {
+  const cards = BUILD.rings.map(ring => {
+    const slotImage = resolveImage(
+      ring.image,
+      ring.name,
+      "ring-card__slot-image",
+      PLACEHOLDER_SVG_RING
+    );
+
+    // If no image resolved to a real <img>, fall back to the emoji icon
+    const slotContent = (ring.image?.local || ring.image?.fallback)
+      ? slotImage
+      : `<span class="ring-card__slot-fallback" aria-hidden="true">${ring.icon}</span>`;
+
+    return `
+    <article class="ring-card">
+      <div class="ring-card__slot" aria-label="${ring.name} icon">
+        <div class="ring-card__slot-inner">${slotContent}</div>
+      </div>
+      <div class="ring-card__body">
+        <h3 class="ring-card__name">${ring.name}</h3>
+        <p class="ring-card__effect">${translate(ring.effect)}</p>
+        <p class="ring-card__location">📍 ${translate(ring.location)}</p>
+      </div>
+    </article>`;
+  }).join("");
+
+  return `<div class="ring-grid">${cards}</div>`;
+}
+
+function renderArmor() {
+  const pieces = BUILD.armor.map(piece => {
+    const slotImage = resolveImage(
+      piece.image,
+      piece.name,
+      "armor-piece__slot-image",
+      PLACEHOLDER_SVG_ARMOR
+    );
+
+    return `
+    <article class="armor-piece">
+      <div class="armor-piece__header">
+        <div class="armor-piece__slot-box" aria-hidden="true">${slotImage}</div>
+        <span class="armor-piece__slot-label">☩ ${translate(piece.slot)}</span>
+      </div>
+      <div class="armor-piece__body">
+        <h3 class="armor-piece__name">${piece.name}</h3>
+        <p class="armor-piece__description">${translate(piece.description)}</p>
+        <p class="armor-piece__alternative">${str.alternativeLabel} ${translate(piece.alternative)}</p>
+      </div>
+    </article>`;
+  }).join("");
+
+  return `<div class="armor-grid">${pieces}</div>`;
+}
+
+
+/* ==========================================================================
+   RENDER PAGE
+   ========================================================================== */
+
+document.body.innerHTML = `
+  <header class="hero" role="banner">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <p class="hero__eyebrow">${str.eyebrow}</p>
+    <h1 class="hero__title">${formatHeroTitle(info.title)}</h1>
+    <p class="hero__tags">${translate(info.tags)}</p>
+    <div class="hero__rule" aria-hidden="true"></div>
+    <p class="hero__description">${translate(info.description)}</p>
+    <div class="hero__badge" aria-label="Build summary">
+      <div class="hero__badge-item">
+        <span class="hero__badge-label">${str.classLabel}</span>
+        <span class="hero__badge-value">${info.startingClass}</span>
+      </div>
+      <div class="hero__badge-separator" aria-hidden="true"></div>
+      <div class="hero__badge-item">
+        <span class="hero__badge-label">${str.levelLabel}</span>
+        <span class="hero__badge-value">${info.targetLevel}</span>
+      </div>
+    </div>
+    <p class="hero__scroll-hint" aria-hidden="true">${str.scrollHint}</p>
+  </header>
+
+  <main class="page-wrapper">
+    ${renderSection("I",   str.sectionStats,   `${str.sectionStatsSub} ${info.targetLevel}`, renderStats())}
+    ${renderSection("II",  str.sectionWeapons, str.sectionWeaponsSub,                        renderWeapons())}
+    ${renderSection("III", str.sectionRings,   str.sectionRingsSub,                          renderRings())}
+    ${renderSection("IV",  str.sectionArmor,   str.sectionArmorSub,                          renderArmor())}
+  </main>
+
+  <footer>
+    <blockquote class="footer__quote">${translate(info.quote)}</blockquote>
+    <p class="footer__credit">${str.footerCredit} ${info.title}</p>
+  </footer>
+`;
+
+
+/* ==========================================================================
+   INTERSECTION OBSERVERS
+   ========================================================================== */
+
+/**
+ * Creates a one-shot IntersectionObserver that adds a CSS class when
+ * an element enters the viewport, then stops observing it.
+ * @param {string} selector     - CSS selector for target elements
+ * @param {string} activeClass  - class added on intersection
+ * @param {number} threshold    - 0–1 visibility ratio to trigger
+ */
+function createRevealObserver(selector, activeClass, threshold = 0.08) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add(activeClass);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold });
+
+  document.querySelectorAll(selector).forEach(el => observer.observe(el));
+}
+
+createRevealObserver(".js-reveal", "js-reveal--visible", 0.08);
+createRevealObserver(".stat-cell", "stat-cell--animated", 0.30);
+</script>
+</body>
+</html>

@@ -4,10 +4,9 @@ const { theme: themeName, buildName } = Astro.props;
 const theme = (themes as Record<string, any>)[themeName];
 
 const cssVars = Object.entries(theme)
-  .map(
-    ([key, value]) =>
-      `--${key.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase())}: ${value}`,
-  )
+  .map(([key, value]) => {
+    return `--${key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`)}: ${value}`;
+  })
   .join("; ");
 ---
 

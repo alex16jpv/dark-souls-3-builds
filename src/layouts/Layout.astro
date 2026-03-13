@@ -2,7 +2,13 @@
 import themes from "../data/themes.json";
 const { theme: themeName, buildName } = Astro.props;
 const theme = (themes as Record<string, any>)[themeName];
-const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")`;
+
+const cssVars = Object.entries(theme)
+  .map(
+    ([key, value]) =>
+      `--${key.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase())}: ${value}`,
+  )
+  .join("; ");
 ---
 
 <!doctype html>
@@ -18,10 +24,9 @@ const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='h
       href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
       rel="stylesheet"
     />
+    <style is:global set:html={`body {${cssVars}}`}></style>
   </head>
-  <body
-    style={`--accent: ${theme.accent}; --accent-dim: ${theme.accentDim}; --accent-glow: ${theme.accentGlow}; --bg: ${theme.bg}; --bg-mid: ${theme.bgMid}; --glow: ${theme.glow}; --radial-glow: ${theme.radialGlow}; --border: ${theme.border}; --border-mid: ${theme.borderMid}; --badge-bg: ${theme.badgeBg}; --header-gradient: ${theme.headerGradient}; --sl-gradient: ${theme.slGradient}; --gold: ${theme.gold}; --gold-dim: ${theme.goldDim}; --text: ${theme.text}; --text-dim: ${theme.textDim}; --noise-svg: ${NOISE_SVG};`}
-  >
+  <body>
     <slot />
   </body>
 </html>
@@ -52,8 +57,7 @@ const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='h
     content: "";
     position: fixed;
     inset: 0;
-    background-image: var(--noise-svg);
-    /* pointer-events: none; */
+    pointer-events: none;
     z-index: 1000;
     opacity: 0.45;
   }

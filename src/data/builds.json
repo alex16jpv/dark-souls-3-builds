@@ -1,0 +1,372 @@
+[
+  {
+    "slug": "test",
+    "language": "es",
+    "theme": "bleed",
+    "seo": {
+      "pageUrl": "https://example.com/builds/bleed-luck",
+      "author": "DS3 Build Guide",
+      "twitterHandle": "",
+      "title": {
+        "es": "Build Sangrado / Suerte DS3 — Guía Completa | Dark Souls 3",
+        "en": "DS3 Bleed / Luck Build — Full Guide | Dark Souls 3"
+      },
+      "description": {
+        "es": "Guía completa de la build de sangrado para Dark Souls 3. Estadísticas óptimas, armas, anillos y armadura recomendados para una build Bleed/Luck al SL 120.",
+        "en": "Complete Dark Souls 3 bleed build guide. Optimal stats, weapons, rings and armor for a Bleed/Luck build at SL 120. Community-tested."
+      },
+      "keywords": {
+        "es": "dark souls 3 build sangrado, ds3 bleed build, ds3 luck build, warden twinblades, ds3 guía, dark souls 3 sl120",
+        "en": "dark souls 3 bleed build, ds3 luck build, warden twinblades build, dark souls 3 guide, ds3 sl120 build"
+      }
+    },
+    "info": {
+      "title": "Bleed / Luck",
+      "startingClass": "Warrior",
+      "targetLevel": 120,
+      "tags": {
+        "es": "Sangrado · Velocidad · PvE/PvP",
+        "en": "Bleed · Speed · PvE/PvP"
+      },
+      "description": {
+        "es": "Una build optimizada por la comunidad para aquellos que buscan velocidad, agresividad y el arte de hacer sangrar a sus enemigos. Basada en estadísticas reales y años de pruebas colectivas.",
+        "en": "A community-optimized build for those who seek speed, aggression, and the art of bleeding their enemies dry. Based on real stats and years of collective testing."
+      },
+      "quote": {
+        "es": "\"La llama se extingue, y la oscuridad toma el lugar del fuego. Pero tú persistes, manchado de sangre, interminable.\"",
+        "en": "\"The flame fades, and darkness takes the place of fire. Yet you persist — blood-stained, unending.\""
+      }
+    },
+
+    "stats": [
+      {
+        "name": { "es": "Vigor", "en": "Vigor" },
+        "abbr": "VGR",
+        "value": 40,
+        "note": { "es": "≈1200 HP", "en": "≈1200 HP" },
+        "highlighted": true
+      },
+      {
+        "name": { "es": "Atención", "en": "Attunement" },
+        "abbr": "ATN",
+        "value": 8,
+        "note": { "es": "Sin magia", "en": "No magic" },
+        "highlighted": false
+      },
+      {
+        "name": { "es": "Resistencia", "en": "Endurance" },
+        "abbr": "END",
+        "value": 30,
+        "note": { "es": "Stamina p/ combos", "en": "Stamina for combos" },
+        "highlighted": false
+      },
+      {
+        "name": { "es": "Vitalidad", "en": "Vitality" },
+        "abbr": "VIT",
+        "value": 15,
+        "note": { "es": "Equip load ligero", "en": "Light equip load" },
+        "highlighted": false
+      },
+      {
+        "name": { "es": "Fuerza", "en": "Strength" },
+        "abbr": "STR",
+        "value": 18,
+        "note": { "es": "Req. mínimo", "en": "Min. requirement" },
+        "highlighted": false
+      },
+      {
+        "name": { "es": "Destreza", "en": "Dexterity" },
+        "abbr": "DEX",
+        "value": 40,
+        "note": { "es": "Soft cap — max daño", "en": "Soft cap — max dmg" },
+        "highlighted": true
+      },
+      {
+        "name": { "es": "Inteligencia", "en": "Intelligence" },
+        "abbr": "INT",
+        "value": 10,
+        "note": { "es": "", "en": "" },
+        "highlighted": false
+      },
+      {
+        "name": { "es": "Fe", "en": "Faith" },
+        "abbr": "FTH",
+        "value": 10,
+        "note": { "es": "", "en": "" },
+        "highlighted": false
+      },
+      {
+        "name": { "es": "Suerte", "en": "Luck" },
+        "abbr": "LCK",
+        "value": 50,
+        "note": { "es": "+10 de armas Hollow", "en": "+10 from Hollow wpns" },
+        "highlighted": true
+      }
+    ],
+
+    "weapons": [
+      {
+        "featured": true,
+        "name": "Warden Twinblades",
+        "image": {
+          "local": "img/weapons/warden-twinblades.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/warden_twinblades.png"
+        },
+        "badge": {
+          "es": "Arma Principal — S Tier",
+          "en": "Main Weapon — S Tier"
+        },
+        "subtitle": {
+          "es": "Cimitarras Gemelas de los Guardianes",
+          "en": "Guardian Twin Blades"
+        },
+        "miniStats": [
+          { "label": { "es": "Sangrado", "en": "Bleed" }, "value": "83" },
+          { "label": { "es": "Velocidad", "en": "Speed" }, "value": "S" },
+          { "label": { "es": "Infusión", "en": "Infuse" }, "value": "Hollow" }
+        ],
+        "description": {
+          "es": "Las mejores armas de sangrado de todo el juego. Con Carthus Rouge, procas el sangrado en solo 2–3 L1. Su weapon art Spin Slash destruye literalmente cualquier jefe del juego.",
+          "en": "The best bleed weapons in the entire game. With Carthus Rouge, you proc bleed in just 2–3 L1 hits. The weapon art Spin Slash destroys virtually any boss."
+        },
+        "location": {
+          "es": "Undead Settlement — Farmeadas de los Cathedral Grave Wardens frente a la Catedral de lo Profundo. Drop ~5%. Usa Symbol of Avarice + Gold Serpent Ring.",
+          "en": "Undead Settlement — Farmed from Cathedral Grave Wardens near the Cathedral of the Deep. ~5% drop. Use Symbol of Avarice + Gold Serpent Ring."
+        }
+      },
+      {
+        "featured": true,
+        "name": "Onikiri & Ubadachi",
+        "image": {
+          "local": "img/weapons/onikiri-ubadachi.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/onikiri_and_ubadachi.png"
+        },
+        "badge": {
+          "es": "Alternativa — S Tier",
+          "en": "Alternative — S Tier"
+        },
+        "subtitle": {
+          "es": "Katanas Gemelas del Cazador",
+          "en": "Hunter's Twin Katanas"
+        },
+        "miniStats": [
+          { "label": { "es": "Sangrado", "en": "Bleed" }, "value": "39×2" },
+          { "label": { "es": "Velocidad", "en": "Speed" }, "value": "S" },
+          { "label": { "es": "Infusión", "en": "Infuse" }, "value": "Hollow" }
+        ],
+        "description": {
+          "es": "Si amas las katanas, estas son tu destino final. Más alcance que las Warden con un moveset increíble. Hollow infusion a 40/40/50 STR/DEX/LCK le da un AR único.",
+          "en": "If you love katanas, these are your endgame. More reach than the Wardens with an incredible moveset. Hollow infusion at 40/40/50 STR/DEX/LCK gives unique AR."
+        },
+        "location": {
+          "es": "Grand Archives — Derrota al NPC Black Hand Kamui en el último piso antes del jefe. Pelea obligatoria.",
+          "en": "Grand Archives — Defeat NPC Black Hand Kamui on the top floor before the final boss. Unmissable fight."
+        }
+      },
+      {
+        "featured": false,
+        "name": "Uchigatana",
+        "image": {
+          "local": "img/weapons/uchigatana.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/uchigatana.png"
+        },
+        "badge": {
+          "es": "Arma Actual — Mantener",
+          "en": "Current Weapon — Keep for now"
+        },
+        "subtitle": {
+          "es": "Tu compañera hasta el endgame",
+          "en": "Your companion until endgame"
+        },
+        "miniStats": [
+          { "label": { "es": "Sangrado", "en": "Bleed" }, "value": "45" },
+          { "label": { "es": "Velocidad", "en": "Speed" }, "value": "A" },
+          { "label": { "es": "Infusión", "en": "Infuse" }, "value": "Sharp" }
+        ],
+        "description": {
+          "es": "Perfecta para la primera mitad del juego. Infúndela Sharp y escala DEX hasta 40. Potencia el sangrado con Carthus Rouge cuando lo consigas.",
+          "en": "Perfect for the first half of the game. Infuse Sharp and scale DEX to 40. Boost bleed with Carthus Rouge when available."
+        },
+        "location": {
+          "es": "Firelink Shrine — Del Sword Master en la entrada. O empieza como Mercenary o Assassin.",
+          "en": "Firelink Shrine — From the Sword Master at the entrance. Or start as Mercenary / Assassin."
+        }
+      },
+      {
+        "featured": false,
+        "name": "Hollow Caestus +10",
+        "image": {
+          "local": "img/weapons/caestus.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/caestus.png"
+        },
+        "badge": {
+          "es": "Offhand — Utilidad",
+          "en": "Offhand — Utility"
+        },
+        "subtitle": {
+          "es": "+5 Suerte gratis en offhand",
+          "en": "+5 free Luck in offhand"
+        },
+        "miniStats": [
+          { "label": { "es": "Peso", "en": "Weight" }, "value": "0.5" },
+          { "label": { "es": "Bonus", "en": "Bonus" }, "value": "+5 LCK" },
+          { "label": { "es": "Extra", "en": "Extra" }, "value": "Parry" }
+        ],
+        "description": {
+          "es": "Con 2 armas Hollow +10 equipadas obtienes +10 Luck extra gratis. El Caestus pesa casi nada y permite parries de emergencia.",
+          "en": "Having 2 Hollow +10 weapons equipped gives you +10 free Luck. The Caestus weighs almost nothing and enables emergency parries."
+        },
+        "location": {
+          "es": "Firelink Shrine — Cómpralo al Shrine Handmaid por 200 almas. Infunde Hollow con la Profaned Coal desbloqueada.",
+          "en": "Firelink Shrine — Buy from the Shrine Handmaid for 200 souls. Infuse Hollow once you unlock the Profaned Coal."
+        }
+      }
+    ],
+
+    "rings": [
+      {
+        "icon": "⛓",
+        "image": {
+          "local": "img/rings/prisoners-chain.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/prisoners_chain.png"
+        },
+        "name": "Prisoner's Chain",
+        "effect": {
+          "es": "+5 Vigor, +5 Endurance, +5 Vitality. El mejor anillo para builds físicas — ahorra 15 niveles.",
+          "en": "+5 Vigor, +5 Endurance, +5 Vitality. The best ring for physical builds — saves 15 stat levels."
+        },
+        "location": {
+          "es": "DLC Ashes of Ariandel — Mata al jefe Gravetender Greatwolf. Sin DLC: Ring of Favor +3.",
+          "en": "DLC Ashes of Ariandel — Kill boss Gravetender Greatwolf. Without DLC: Ring of Favor +3."
+        }
+      },
+      {
+        "icon": "🩸",
+        "image": {
+          "local": "img/rings/carthus-bloodring.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/carthus_bloodring.png"
+        },
+        "name": "Carthus Bloodring",
+        "effect": {
+          "es": "+10 iframes al dodge. Tu roll mantiene frames máximos sin importar el equip load.",
+          "en": "+10 iframes on dodge. Your roll keeps maximum frames regardless of equip load."
+        },
+        "location": {
+          "es": "Catacombs of Carthus — Detrás de la puerta que abre el esqueleto bola de fuego. Cofre.",
+          "en": "Catacombs of Carthus — Behind the door opened by the fire skeleton ball. Chest item."
+        }
+      },
+      {
+        "icon": "⚔",
+        "image": {
+          "local": "img/rings/ring-of-favor.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/ring_of_favor.png"
+        },
+        "name": "Ring of Favor +3",
+        "effect": {
+          "es": "+6% HP, +11.5% Stamina, +8.5% equip load. Excelente valor general para cualquier build.",
+          "en": "+6% HP, +11.5% Stamina, +8.5% equip load. Excellent all-around value for any build."
+        },
+        "location": {
+          "es": "Base: Irithyll Dungeon (Angels). Versión +3: Ringed City DLC.",
+          "en": "Base version: Irithyll Dungeon (Angels). +3 version: Ringed City DLC."
+        }
+      },
+      {
+        "icon": "🔮",
+        "image": {
+          "local": "img/rings/lloyds-sword-ring.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/lloyds_sword_ring.png"
+        },
+        "name": "Lloyd's Sword Ring",
+        "effect": {
+          "es": "+10% daño a HP completa. Potencia el primer burst antes de recibir daño.",
+          "en": "+10% damage at full HP. Boosts the opening burst before taking damage."
+        },
+        "location": {
+          "es": "Irithyll of the Boreal Valley — Zona de Anor Londo, aposentos de los caballeros plateados.",
+          "en": "Irithyll of the Boreal Valley — Anor Londo area, silver knight chambers."
+        }
+      }
+    ],
+
+    "armor": [
+      {
+        "name": "Dancer's Crown",
+        "image": {
+          "local": "img/armor/dancers-crown.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/dancers_crown.png"
+        },
+        "slot": {
+          "es": "Cabeza",
+          "en": "Head"
+        },
+        "description": {
+          "es": "Excelente defensa física para su bajo peso. Se consigue tras matar a la Dancer of the Boreal Valley.",
+          "en": "Excellent physical defense for its low weight. Obtained after killing the Dancer of the Boreal Valley."
+        },
+        "alternative": {
+          "es": "Old Wolf Curved Sword Hood / Nameless King Helm",
+          "en": "Old Wolf Curved Sword Hood / Nameless King Helm"
+        }
+      },
+      {
+        "name": "Alva Armor",
+        "image": {
+          "local": "img/armor/alva-armor.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/alva_armor.png"
+        },
+        "slot": {
+          "es": "Torso",
+          "en": "Chest"
+        },
+        "description": {
+          "es": "La mejor relación peso/defensa del juego. Farmeable de un invader NPC en Irithyll of the Boreal Valley.",
+          "en": "Best weight-to-defense ratio in the game. Farmable from an NPC invader in Irithyll of the Boreal Valley."
+        },
+        "alternative": {
+          "es": "Undead Legion Armor / Master's Attire",
+          "en": "Undead Legion Armor / Master's Attire"
+        }
+      },
+      {
+        "name": "Dancer's Gauntlets",
+        "image": {
+          "local": "img/armor/dancers-gauntlets.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/dancers_gauntlets.png"
+        },
+        "slot": {
+          "es": "Manos",
+          "en": "Hands"
+        },
+        "description": {
+          "es": "Complementan el set de la Dancer. Para ir más ligero usa Wanderer Manchettes (pesan casi nada).",
+          "en": "Completes the Dancer set. For a lighter option use Wanderer Manchettes (near weightless)."
+        },
+        "alternative": {
+          "es": "Cualquier pieza bajo 2.0 de peso",
+          "en": "Anything under 2.0 weight units"
+        }
+      },
+      {
+        "name": "Alva Leggings",
+        "image": {
+          "local": "img/armor/alva-leggings.png",
+          "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/alva_leggings.png"
+        },
+        "slot": {
+          "es": "Piernas",
+          "en": "Legs"
+        },
+        "description": {
+          "es": "Completan el set Alva. Ligeros, con buena defensa física y resistencias equilibradas.",
+          "en": "Complete the Alva set. Light, solid physical defense and balanced resistances."
+        },
+        "alternative": {
+          "es": "Master's Trousers / Loincloth (ultra light)",
+          "en": "Master's Trousers / Loincloth (ultra light)"
+        }
+      }
+    ]
+  }
+]

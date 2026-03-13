@@ -1,0 +1,45 @@
+---
+const { build } = Astro.props;
+---
+
+<footer>
+  <blockquote class="footer__quote">{build.info.quote.en}</blockquote>
+  <p class="footer__credit">str.footerCredit {build.info.title}</p>
+</footer>
+
+<style>
+  footer {
+    text-align: center;
+    padding: 60px 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  footer::before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--gold),
+      transparent
+    );
+    margin: 0 auto 28px;
+  }
+
+  .footer__quote {
+    font-style: italic;
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 520px;
+    margin: 0 auto 18px;
+  }
+  .footer__credit {
+    font-family: "Cinzel", serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+</style>

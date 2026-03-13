@@ -1,0 +1,20 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Footer from "../../components/Footer.astro";
+import data from "../../data/builds.json";
+
+export async function getStaticPaths() {
+  return data.map((build) => ({
+    params: { slug: build.slug },
+    props: { build },
+  }));
+}
+
+const { build } = Astro.props;
+---
+
+<Layout theme={build.theme}>
+  <Hero build={build} />
+  <Footer build={build} />
+</Layout>

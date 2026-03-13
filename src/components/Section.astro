@@ -1,0 +1,60 @@
+---
+const { title, subtitle, romanNumeral } = Astro.props;
+---
+
+<section class="section js-reveal" aria-label="${title}">
+  <div class="section__header">
+    <div class="section__number" aria-hidden="true">{romanNumeral}</div>
+    <div class="section__titles">
+      <h2>{title}</h2>
+      <p>{subtitle}</p>
+    </div>
+    <div class="section__rule" aria-hidden="true"></div>
+  </div>
+  <slot />
+</section>
+
+<style>
+  .section {
+    margin-bottom: 72px;
+  }
+
+  .section__header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+
+  .section__number {
+    font-family: "Cinzel Decorative", cursive;
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--accent);
+    opacity: 0.28;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .section__titles h2 {
+    font-family: "Cinzel", serif;
+    font-size: clamp(18px, 3.5vw, 26px);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .section__titles p {
+    font-style: italic;
+    color: var(--accent);
+    font-size: 14px;
+    margin-top: 3px;
+  }
+
+  .section__rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), transparent);
+  }
+</style>

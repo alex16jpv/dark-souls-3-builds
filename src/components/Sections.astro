@@ -1,0 +1,43 @@
+---
+import Section from "./Section.astro";
+const { build } = Astro.props;
+---
+
+<main class="page-wrapper">
+  <Section
+    title="str.sectionStats"
+    subtitle={`str.sectionStatsSub ${build.info.targetLevel}`}
+    romanNumeral="I"
+  >
+    Render Stats...
+  </Section>
+  <Section
+    title="str.sectionWeapons"
+    subtitle="str.sectionWeaponsSub"
+    romanNumeral="II"
+  >
+    Render Weapons...
+  </Section>
+  <Section
+    title="str.sectionRings"
+    subtitle="str.sectionRingsSub"
+    romanNumeral="III"
+  >
+    Render Rings...
+  </Section>
+  <Section
+    title="str.sectionArmor"
+    subtitle="str.sectionArmorSub"
+    romanNumeral="IV"
+  >
+    Render Armor...
+  </Section>
+</main>
+
+<style>
+  .page-wrapper {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+</style>

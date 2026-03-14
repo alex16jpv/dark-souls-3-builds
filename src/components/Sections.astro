@@ -1,35 +1,25 @@
 ---
 import Section from "./Section.astro";
+import Stats from "./Stats.astro";
+
 const { build } = Astro.props;
 ---
 
 <main class="page-wrapper">
   <Section
-    title="str.sectionStats"
-    subtitle={`str.sectionStatsSub ${build.info.targetLevel}`}
+    title="Stats"
+    subtitle={`Optimal distribution for SL ${build.info.targetLevel}`}
     romanNumeral="I"
   >
-    Render Stats...
+    <Stats build={build} />
   </Section>
-  <Section
-    title="str.sectionWeapons"
-    subtitle="str.sectionWeaponsSub"
-    romanNumeral="II"
-  >
+  <Section title="Weapons" subtitle="Optimal weapon choices" romanNumeral="II">
     Render Weapons...
   </Section>
-  <Section
-    title="str.sectionRings"
-    subtitle="str.sectionRingsSub"
-    romanNumeral="III"
-  >
+  <Section title="Rings" subtitle="Optimal ring choices" romanNumeral="III">
     Render Rings...
   </Section>
-  <Section
-    title="str.sectionArmor"
-    subtitle="str.sectionArmorSub"
-    romanNumeral="IV"
-  >
+  <Section title="Armor" subtitle="Optimal armor choices" romanNumeral="IV">
     Render Armor...
   </Section>
 </main>

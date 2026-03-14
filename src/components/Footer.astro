@@ -3,8 +3,10 @@ const { build } = Astro.props;
 ---
 
 <footer>
-  <blockquote class="footer__quote">{build.info.quote.en}</blockquote>
-  <p class="footer__credit">str.footerCredit {build.info.title}</p>
+  <blockquote class="footer__quote">{build.info.quote}</blockquote>
+  <p class="footer__credit">
+    Dark Souls III · Build Guide · {build.info.title}
+  </p>
 </footer>
 
 <style>

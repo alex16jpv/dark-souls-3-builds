@@ -1,5 +1,7 @@
 ---
 import Section from "./Section.astro";
+import Stats from "./Stats.astro";
+
 const { build } = Astro.props;
 ---
 
@@ -9,7 +11,7 @@ const { build } = Astro.props;
     subtitle={`str.sectionStatsSub ${build.info.targetLevel}`}
     romanNumeral="I"
   >
-    Render Stats...
+    <Stats build={build} />
   </Section>
   <Section
     title="str.sectionWeapons"

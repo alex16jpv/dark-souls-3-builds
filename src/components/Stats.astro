@@ -1,0 +1,182 @@
+---
+type Props = {
+  build: {
+    info: {
+      startingClass: string;
+      targetLevel: number;
+    };
+    stats: Record<string, any>[];
+  };
+};
+const { build } = Astro.props;
+
+const toFillWidth = (value: number) => {
+  const clamped = Math.min(Math.max(value, 0), 99);
+  return Math.round((clamped / 99) * 100) + "%";
+};
+---
+
+<div class="stats-panel">
+  <div class="stats-panel__header">
+    str.headerClass: {build.info.startingClass.toUpperCase()} &nbsp;·&nbsp; str.headerLevel:
+    {build.info.targetLevel}
+  </div>
+  <div class="stats-panel__summary">
+    <div>
+      <div class="stats-panel__level-label">str.levelLabel</div>
+      <div class="stats-panel__level-value">{build.info.targetLevel}</div>
+    </div>
+    <div>
+      <div class="stats-panel__class-note">str.classNote</div>
+      <div class="stats-panel__class-name">{build.info.startingClass}</div>
+    </div>
+  </div>
+  <div class="stats-grid" role="list">
+    {
+      build.stats.map((stat) => {
+        const name = stat.name.en;
+        const note = stat.note.en;
+        const highlightMod = stat.highlighted ? " stat-cell--highlighted" : "";
+        return (
+          <div
+            class={`stat-cell${highlightMod}`}
+            style={`--fill-width: ${toFillWidth(stat.value)}`}
+          >
+            <span class="stat-cell__label">
+              {name} ({stat.abbr})
+            </span>
+            <div class="stat-cell__value">{stat.value}</div>
+            {note && <div class="stat-cell__note">{note}</div>}
+          </div>
+        );
+      })
+    }
+  </div>
+</div>
+
+<style>
+  .stats-panel {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .stats-panel__header {
+    background: var(--header-gradient);
+    padding: 14px 24px;
+    font-family: "Cinzel", serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .stats-panel__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 24px 28px;
+    background: var(--sl-gradient);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stats-panel__level-label {
+    font-family: "Cinzel", serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+
+  .stats-panel__level-value {
+    font-family: "Cinzel Decorative", cursive;
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--gold);
+    text-shadow: 0 0 28px rgba(201, 168, 76, 0.4);
+  }
+
+  .stats-panel__class-note {
+    font-family: "Cinzel", serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+  }
+  .stats-panel__class-name {
+    font-family: "Cinzel", serif;
+    font-size: 20px;
+    color: var(--text);
+    margin-top: 4px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  }
+
+  .stat-cell {
+    padding: 20px 22px;
+    border-right: 1px solid var(--border-mid);
+    border-bottom: 1px solid var(--border-mid);
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.35);
+    transition: background 0.25s;
+  }
+
+  .stat-cell:hover {
+    background: var(--glow);
+  }
+  .stat-cell--highlighted {
+    background: var(--glow-highlighted);
+  }
+  .stat-cell--highlighted:hover {
+    background: var(--glow);
+  }
+
+  .stat-cell::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--accent);
+    width: 0;
+    transition: width 1.4s ease-out;
+  }
+
+  .stat-cell--animated::after {
+    width: var(--fill-width);
+  }
+
+  .stat-cell__label {
+    display: block;
+    font-family: "Cinzel", serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 6px;
+  }
+
+  .stat-cell__value {
+    font-family: "Cinzel Decorative", cursive;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .stat-cell--highlighted .stat-cell__value {
+    color: var(--accent-glow);
+    text-shadow: 0 0 16px var(--glow);
+  }
+
+  .stat-cell__note {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--accent);
+    margin-top: 3px;
+  }
+</style>

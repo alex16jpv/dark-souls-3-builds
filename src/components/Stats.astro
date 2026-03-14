@@ -34,8 +34,8 @@ const toFillWidth = (value: number) => {
   <div class="stats-grid" role="list">
     {
       build.stats.map((stat) => {
-        const name = stat.name.en;
-        const note = stat.note.en;
+        const name = stat.name;
+        const note = stat.note;
         const highlightMod = stat.highlighted ? " stat-cell--highlighted" : "";
         return (
           <div

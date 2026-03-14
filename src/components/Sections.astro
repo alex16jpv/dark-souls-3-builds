@@ -1,6 +1,7 @@
 ---
 import Section from "./Section.astro";
 import Stats from "./Stats.astro";
+import Weapons from "./Weapons.astro";
 
 const { build } = Astro.props;
 ---
@@ -13,10 +14,10 @@ const { build } = Astro.props;
   >
     <Stats build={build} />
   </Section>
-  <!-- <Section title="Weapons" subtitle="Optimal weapon choices" romanNumeral="II">
-    Render Weapons...
+  <Section title="Weapons" subtitle="Optimal weapon choices" romanNumeral="II">
+    <Weapons build={build} />
   </Section>
-  <Section title="Rings" subtitle="Optimal ring choices" romanNumeral="III">
+  <!-- <Section title="Rings" subtitle="Optimal ring choices" romanNumeral="III">
     Render Rings...
   </Section>
   <Section title="Armor" subtitle="Optimal armor choices" romanNumeral="IV">

@@ -1,0 +1,256 @@
+---
+import { Image } from "astro:assets";
+type Props = {
+  build: {
+    weapons: {
+      name: string;
+      subtitle: string;
+      badge: string;
+      miniStats: { label: string; value: string }[];
+      description: string;
+      location: string;
+      featured?: boolean;
+      image: {
+        local: string;
+        fallback: string;
+      };
+    }[];
+  };
+};
+const { build } = Astro.props;
+---
+
+<div class="weapon-grid">
+  {
+    build.weapons.map((weapon) => {
+      const featuredMod = weapon.featured ? " weapon-card--featured" : "";
+      return (
+        <article class={`weapon-card${featuredMod}`}>
+          <div class="weapon-card__header">
+            <div class="weapon-card__slot" aria-hidden="true">
+              <img
+                class="weapon-card__slot-image"
+                src={weapon.image.local || weapon.image.fallback}
+                alt={weapon.name}
+                onerror={`this.onerror=null; this.src='${weapon.image.fallback}';`}
+              />
+            </div>
+            <div class="weapon-card__header-text">
+              <div class="weapon-card__badge">{weapon.badge}</div>
+              <h3 class="weapon-card__name">{weapon.name}</h3>
+              <div class="weapon-card__subtitle">{weapon.subtitle}</div>
+            </div>
+          </div>
+          <div class="weapon-card__body">
+            <div class="weapon-card__mini-stats" aria-label="weapon stats">
+              {weapon.miniStats.map((miniStat) => (
+                <div class="mini-stat">
+                  <span class="mini-stat__label">{miniStat.label}</span>
+                  <span class="mini-stat__value">{miniStat.value}</span>
+                </div>
+              ))}
+            </div>
+            <p class="weapon-card__description">{weapon.description}</p>
+            <div class="weapon-card__location">
+              <span class="weapon-card__location-label">📍 Location</span>
+              {weapon.location}
+            </div>
+          </div>
+        </article>
+      );
+    })
+  }
+</div>
+
+<style>
+  /* ── Shared slot placeholder ── */
+  .slot__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0.18;
+    color: var(--accent);
+  }
+
+  .weapon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+  }
+
+  .weapon-card {
+    background: var(--bg-mid);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--accent);
+    padding: 0;
+    overflow: hidden;
+    transition:
+      transform 0.25s,
+      box-shadow 0.25s;
+  }
+
+  .weapon-card--featured {
+    border-top-color: var(--gold);
+    border-color: rgba(201, 168, 76, 0.25);
+  }
+  .weapon-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px var(--glow);
+  }
+
+  /* Inventory slot header — icon left, badge+name right */
+  .weapon-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .weapon-card__slot {
+    width: 88px;
+    height: 88px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
+      rgba(0, 0, 0, 0.55);
+    border-right: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Corner notch — DS3 inventory aesthetic */
+  .weapon-card__slot::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 14px 14px 0;
+    border-color: transparent var(--accent) transparent transparent;
+    opacity: 0.7;
+  }
+
+  .weapon-card__slot-image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    image-rendering: auto;
+    filter: drop-shadow(0 2px 8px var(--glow));
+    transition: transform 0.3s ease;
+  }
+
+  .weapon-card:hover .weapon-card__slot-image {
+    transform: scale(1.12);
+  }
+
+  .weapon-card__slot-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    opacity: 0.2;
+    color: var(--accent);
+  }
+
+  .weapon-card__header-text {
+    flex: 1;
+    padding: 12px 16px;
+    min-width: 0;
+  }
+
+  .weapon-card__body {
+    padding: 18px 22px 22px;
+  }
+
+  .weapon-card__badge {
+    display: inline-block;
+    font-family: "Cinzel", serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    margin-bottom: 14px;
+    background: var(--badge-bg);
+    color: var(--text);
+  }
+
+  .weapon-card--featured .weapon-card__badge {
+    background: var(--gold-dim);
+  }
+
+  .weapon-card__name {
+    font-family: "Cinzel", serif;
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .weapon-card__subtitle {
+    font-style: italic;
+    color: var(--accent);
+    font-size: 14px;
+    margin: 5px 0 18px;
+  }
+
+  .weapon-card__mini-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 14px;
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid var(--accent);
+    margin-bottom: 18px;
+  }
+
+  .mini-stat {
+    text-align: center;
+  }
+
+  .mini-stat__label {
+    display: block;
+    font-family: "Cinzel", serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 3px;
+  }
+
+  .mini-stat__value {
+    font-family: "Cinzel", serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--accent-glow);
+  }
+
+  .weapon-card__description {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  .weapon-card__location {
+    margin-top: 14px;
+    padding: 11px 14px;
+    background: var(--glow); /** */
+    border-left: 2px solid var(--accent);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .weapon-card__location-label {
+    display: block;
+    font-family: "Cinzel", serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+</style>

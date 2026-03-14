@@ -91,7 +91,7 @@
         "featured": true,
         "name": "Warden Twinblades",
         "image": {
-          "local": "img/weapons/warden-twinblades.png",
+          "local": "weapons/warden_twinblades.png",
           "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/warden_twinblades.png"
         },
         "badge": "Main Weapon — S Tier",
@@ -108,7 +108,7 @@
         "featured": true,
         "name": "Onikiri & Ubadachi",
         "image": {
-          "local": "img/weapons/onikiri-ubadachi.png",
+          "local": "weapons/onikiri_ubadachi.png",
           "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/onikiri_and_ubadachi.png"
         },
         "badge": "Alternative — S Tier",
@@ -125,7 +125,7 @@
         "featured": false,
         "name": "Uchigatana",
         "image": {
-          "local": "img/weapons/uchigatana.png",
+          "local": "weapons/uchigatana.png",
           "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/uchigatana.png"
         },
         "badge": "Current Weapon — Keep for now",
@@ -142,7 +142,7 @@
         "featured": false,
         "name": "Hollow Caestus +10",
         "image": {
-          "local": "img/weapons/caestus.png",
+          "local": "weapons/caestus.png",
           "fallback": "https://darksouls3.wiki.fextralife.com/file/Dark-Souls-3/caestus.png"
         },
         "badge": "Offhand — Utility",
